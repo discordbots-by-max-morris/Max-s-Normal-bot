@@ -46,6 +46,7 @@ client.registry
     ['games', 'Games'],
     ['quote', 'Quote'],
     ['economy', 'Economy'],
+    ['search', 'search'],
     ['moderation', 'Moderation'],
     ['team', 'Team'],
     ['random', 'Random'],
