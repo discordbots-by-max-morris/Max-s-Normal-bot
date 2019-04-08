@@ -48,6 +48,7 @@ client.registry
     ['economy', 'Economy'],
     ['moderation', 'Moderation'],
     ['team', 'Team'],
+    ['random', 'Random'],
     ['admin', 'Admin'],
     ['music', 'Music'],
     ['simple', 'simple'],
