@@ -1,5 +1,5 @@
 const { Command } = require('discord.js-commando');
-const { RichEmbed } = require('discord.js');
+const discord = require('discord.js');
 const request = require('superagent');
 
 module.exports = class ForecastCommand extends Command {
@@ -29,7 +29,7 @@ module.exports = class ForecastCommand extends Command {
                 .get(`https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where u=\'f\' AND woeid in (select woeid from geo.places(1) where text="${query}")&format=json`);
             if (!body.query.count) throw new Error('Location Not Found.');
             const forecasts = body.query.results.channel.item.forecast;
-            var embed = new RichEmbed()
+            var embed = new discord.RichEmbed()
                 .setColor(0x0000FF)
                 .setAuthor(body.query.results.channel.title, 'https://i.imgur.com/2MT0ViC.png')
                 .setURL(body.query.results.channel.link)
