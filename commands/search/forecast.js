@@ -48,7 +48,7 @@ module.exports = class ForecastCommand extends Command {
                     `**High:** ${forecasts[5].high}°F, **Low:** ${forecasts[5].low}°F, **Condition:** ${forecasts[5].text}`)
                 .addField(`${forecasts[6].day} - ${forecasts[6].date}`,
                     `**High:** ${forecasts[6].high}°F, **Low:** ${forecasts[6].low}°F, **Condition:** ${forecasts[6].text}`);
-            msg.channel.send(msg.author, { embed });
+            msg.channel.send(embed);
         } catch (err) {
             return msg.say(err);
         }
