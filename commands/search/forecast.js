@@ -34,6 +34,7 @@ module.exports = class ForecastCommand extends Command {
                 .setAuthor(body.query.results.channel.title, 'https://i.imgur.com/2MT0ViC.png')
                 .setURL(body.query.results.channel.link)
                 .setTimestamp()
+                .setDescription('I think I have had to put a fucking message in here')
                 .addField(`${forecasts[0].day} - ${forecasts[0].date}`, `**High:** ${forecasts[0].high}°F **Low:** ${forecasts[0].low}°F **Condition:** ${forecasts[0].text}`)
                 .addField(`${forecasts[1].day} - ${forecasts[1].date}`, `**High:** ${forecasts[1].high}°F **Low:** ${forecasts[1].low}°F **Condition:** ${forecasts[1].text}`)
                 .addField(`${forecasts[2].day} - ${forecasts[2].date}`, `**High:** ${forecasts[2].high}°F **Low:** ${forecasts[2].low}°F **Condition:** ${forecasts[2].text}`)
