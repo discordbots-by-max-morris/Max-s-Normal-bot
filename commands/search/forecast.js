@@ -20,7 +20,7 @@ module.exports = class ForecastCommand extends Command {
     }
 
     async run(message, args) {
-        if (message.channel.type !== 'dm')
+        if (msg.channel.type === 'dm') return
             if (!message.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
                 return message.say('This Command requires the `Embed Links` Permission.');
         const { query } = args;
