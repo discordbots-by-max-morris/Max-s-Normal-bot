@@ -20,7 +20,8 @@ module.exports = class ForecastCommand extends Command {
     }
 
     async run(message, args) {
-        if (message.channel.type === 'dm') return
+        if (message.channel.type === 'dm')
+{
             if (!message.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
                 return message.say('This Command requires the `Embed Links` Permission.');
         const { query } = args;
@@ -42,9 +43,11 @@ module.exports = class ForecastCommand extends Command {
                 .addField(`${forecasts[4].day} - ${forecasts[4].date}`, `**High:** ${forecasts[4].high}°F **Low:** ${forecasts[4].low}°F **Condition:** ${forecasts[4].text}`)
                 .addField(`${forecasts[5].day} - ${forecasts[5].date}`, `**High:** ${forecasts[5].high}°F, **Low:** ${forecasts[5].low}°F **Condition:** ${forecasts[5].text}`)
                 .addField(`${forecasts[6].day} - ${forecasts[6].date}`, `**High:** ${forecasts[6].high}°F **Low:** ${forecasts[6].low}°F **Condition:** ${forecasts[6].text}`);
-           return message.embed(embed);
+           return message.channel.send(embed);
         } catch (err) {
             return message.say(err);
         }
     }
+}
+
 };
