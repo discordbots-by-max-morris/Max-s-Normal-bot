@@ -1,6 +1,5 @@
 const Discord = require('discord.js');
 const commando = require('discord.js-commando');
-const commandSplitter = require('../../utils/commandSplitter.json');
 
 class help extends commando.Command {
     constructor(client) {
@@ -16,9 +15,7 @@ class help extends commando.Command {
 
     async run(msg) {
 
-        const option = commandSplitter.stringToArray(msg.content);
 
-        createMessage(option[0]);
 
         function createMessage(string, bookmessage) {
             const embed = new Discord.RichEmbed({
