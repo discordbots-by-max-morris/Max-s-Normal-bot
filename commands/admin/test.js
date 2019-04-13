@@ -1,6 +1,5 @@
 const Discord = require('discord.js');
 const commando = require('discord.js-commando');
-const commandSplitter = require('../../utils/commandSplitter');
 
 class help extends commando.Command {
     constructor(client) {
@@ -78,7 +77,7 @@ class help extends commando.Command {
             }
 
             embed.setThumbnail(msg.client.user.avatarURL);
-            embed.setFooter("Developed by __Tigo__#2015", msg.client.user.avatarURL);
+            embed.setFooter("Developed by Max Morris#5487", msg.client.user.avatarURL);
             if (bookmessage !== undefined) {
                 bookmessage.edit(embed).then(async function (result) {
 
