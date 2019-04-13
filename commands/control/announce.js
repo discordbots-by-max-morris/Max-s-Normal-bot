@@ -11,7 +11,7 @@ module.exports = class AnnounceCommand extends Command {
       memberName: 'announce',
       description: 'Sends an announcemnt to #announcements in SmoreSoftware',
       details: oneLine`
-		    This command sends an announcemnt to #announcements in SmoreSoftware.
+		    This command sends an announcemnt to #announcements in SERVER.
             Usage is restricted to bot owners.
 			`,
       examples: ['announce'],
@@ -30,7 +30,6 @@ module.exports = class AnnounceCommand extends Command {
   async run(message, args) {
     const annChan = this.client.channels.get('549824631846993922');
     const annRole = message.guild.roles.get('<@&559627066689978368>');
-    annRole.setMentionable(true)
     const embed = new RichEmbed()
       .setAuthor(message.author.username, message.author.avatarURL)
       .setDescription(args.toAnn)
