@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const commando = require('discord.js-commando');
-const commandSplitter = require('../../utils/commandSplitter');
+const commandSplitter = require('../../utils/commandSplitter.json');
 
 class help extends commando.Command {
     constructor(client) {
