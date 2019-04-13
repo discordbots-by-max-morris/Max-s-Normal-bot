@@ -2,16 +2,16 @@ const { Command } = require('discord.js-commando');
 const { oneLine } = require('common-tags');
 const { RichEmbed } = require('discord.js');
 
-module.exports = class AnnounceCommand extends Command {
+module.exports = class DEVAnnounceCommand extends Command {
   constructor(bot) {
     super(bot, {
-      name: 'DEVannounce',
-      aliases: ['DEVupdate','sendDEVupdate'],
+      name: 'devannounce',
+      aliases: ['devupdate','senddevupdate'],
       group: 'control',
-      memberName: 'announce',
-      description: 'Sends an announcemnt to #announcements in SERVER',
+      memberName: 'devannounce',
+      description: 'Sends an announcemnt to #dev-talks in SERVER',
       details: oneLine`
-		    This command sends an announcemnt to #announcements in SERVER
+		    This command sends an announcemnt to #dev-talks in SERVER
             Usage is restricted to bot owners.
 			`,
       examples: ['announce'],
