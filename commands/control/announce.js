@@ -28,15 +28,13 @@ module.exports = class AnnounceCommand extends Command {
   }
 
   async run(message, args) {
-    const annChan = this.client.channels.get('566635831922786325');
-    const annRole = message.guild.roles.get('556358302620188673');
-    annRole.setMentionable true;
+    const annChan = this.client.channels.get('556358302620188673');
     const embed = new RichEmbed()
       .setAuthor(message.author.username, message.author.avatarURL)
       .setDescription(args.toAnn)
       .setColor('0xFF0000')
       .setTimestamp();
-    annChan.send('<@&338046233765478401>', { embed }).then(() => {
+    annChan.send('<@&556364969135046659>', { embed }).then(() => {
       message.reply('Announcement sent!');
     });
   }
