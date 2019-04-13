@@ -35,7 +35,7 @@ module.exports = class DEVAnnounceCommand extends Command {
       .setColor('0xFF0000')
       .setTimestamp();
     annChan.send('<@&556361477653659659>', { embed }).then(() => {
-      message.reply('Announcement sent!');
+      message.reply('DEVAnnouncement sent!');
     });
   }
 };
