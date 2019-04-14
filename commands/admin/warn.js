@@ -1,6 +1,5 @@
 const commando = require('discord.js-commando');
 const discord = require('discord.js');
-const botconfig = require("botconfig.json");
 const fs = require("fs");
 const ms = require("ms");
 const warns = JSON.parse(fs.readFileSync("./warnings.json", "utf8"));
