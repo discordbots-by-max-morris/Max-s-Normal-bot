@@ -6,7 +6,7 @@ module.exports = class BotStatsCommand extends Command {
         super(client, {
             name: 'status',
             aliases: ["info", "specs","invite", "information", "about"],
-            group: 'utilisation',
+            group: 'admin',
             memberName: 'stats',
             description: 'Shows the status of the Bot'
         });
