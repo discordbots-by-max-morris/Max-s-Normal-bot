@@ -5,9 +5,9 @@ let currentStatusText = 'Running in %count% guilds';
 module.exports = class SetNowPlaying extends Command {
   constructor(client) {
     super(client, {
-      name: "status",
+      name: "statusgame",
       group: "admin",
-      memberName: "status",
+      memberName: "statusgame",
       description: "Set the bot's status ('now playing') field",
       examples: [
         "status Being a cool bot",
