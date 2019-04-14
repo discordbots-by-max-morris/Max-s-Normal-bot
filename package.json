@@ -28,6 +28,7 @@
     "request-promise": "^4.2.4",
     "sqlite": "^3.0.3",
     "superagent": "^4.1.0",
+    "weather-js": "^2.0.0",
     "ytdl-core": "^0.29.1"
   },
   "devDependencies": {},
