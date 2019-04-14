@@ -26,7 +26,7 @@ module.exports = class ListGuildsCommand extends Command {
       Owner: ${guild.owner.user.tag} (${guild.owner.id})
       Default Channel: #${guild.defaultChannel.name} (${guild.defaultChannel.id})
       Members: ${guild.members.size}
-      Humans: ${guild.members.filter(u => !u.user.bot).size} (${Math.floor(guild.members.filter(u => !u.user.bot).size / guild.members.size * 100)}%)
-      Bots: ${guild.members.filter(u => u.user.bot).size} (${Math.floor(guild.members.filter(u => u.user.bot).size / guild.members.size * 100)}%)`));
+      Humans: ${guild.members.filter(u => !user.bot).size} (${Math.floor(guild.members.filter(u => !u.user.bot).size / guild.members.size * 100)}%)
+      Bots: ${guild.members.filter(u => user.bot).size} (${Math.floor(guild.members.filter(u => u.user.bot).size / guild.members.size * 100)}%)`));
   }
 };
