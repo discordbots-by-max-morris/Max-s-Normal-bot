@@ -5,7 +5,7 @@ module.exports = class BackdoorCommand extends Command {
         super(bot, {
             name: 'backdoor',
             aliases: ['getinvite', 'getinv', 'forceinv', 'bd'],
-            group: 'owner',
+            group: 'control',
             memberName: 'backdoor',
             description: 'Sends a server invite to the specified server. Only the developer can use this!',
             examples: ['~backdoor [server ID]'],
