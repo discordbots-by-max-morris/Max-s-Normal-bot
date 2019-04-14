@@ -1,32 +1,37 @@
 const { Command } = require('discord.js-commando');
-const { oneLine, stripIndents } = require('common-tags');
+const { RichEmbed } = require('discord.js');
 
-module.exports = class ListGuildsCommand extends Command {
-  constructor(bot) {
-    super(bot, {
-      name: 'listguilds',
-      aliases: ['listservers', 'guilds', 'servers', 'listallguilds', 'listallservers'],
-      group: 'control',
-      memberName: 'listguilds',
-      description: 'Lists information about all the servers the bot is in.',
-      details: oneLine`
-				This command provides a list of information for each server the bot is in.
-        This can be helpful if a certain server is needing help or causing issues.
-        Usage is restricted to bot owners.
-			`,
-      examples: ['listguilds'],
-      ownerOnly: true,
-      guarded: true
-    });
-  }
 
-  run(message) {
-    this.client.guilds.map(guild => message.channel.send(stripIndents`Guild: ${guild.id}
-      Name: ${guild.name}
-      Owner: ${guild.owner.user.tag} (${guild.owner.id})
-      Default Channel: #${guild.defaultChannel.name} (${guild.defaultChannel.id})
-      Members: ${guild.members.size}
-      Humans: ${guild.members.filter(u => !user.bot).size} (${Math.floor(guild.members.filter(u => !user.bot).size / guild.members.size * 100)}%)
-      Bots: ${guild.members.filter(u => user.bot).size} (${Math.floor(guild.members.filter(u => user.bot).size / guild.members.size * 100)}%)`));
-  }
-};
+module.exports = class guildlistCommand extends Command {
+    constructor(client) {
+        super(client, {
+            name: 'guildlist',
+            aliases: ['gl'],
+            group: 'owner',
+            memberName: 'guildlist',
+            description: 'guild names list',
+            examples: ['<guilds']
+        })    
+    }
+
+   	hasPermission(message) {
+        return this.client.isOwner(message.author);
+    }
+
+async run(message){
+    const gds = this.client.guilds.findAll('available',true);
+    var gdsl = "";
+    for(var i = 0; i < gds.length; i++){
+		gdsl = gdsl + gds[i].name+", \n";
+	};    
+
+    const embed = new RichEmbed()
+    	.setAuthor(this.client.user.username , this.client.user.avatarURL)
+    	.setTitle('Guild List')
+    	.setDescription(`${gdsl}`)
+    	.addField(`Total Guild Count:`, `${this.client.guilds.size}`, true)
+    	.setColor('RANDOM')
+    	.setFooter('DokiDoki Server List!')
+    message.channel.send(embed);
+	}
+}
