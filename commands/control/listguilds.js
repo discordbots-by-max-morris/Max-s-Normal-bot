@@ -31,7 +31,7 @@ async run(message){
     	.setDescription(`${gdsl}`)
     	.addField(`Total Guild Count:`, `${this.client.guilds.size}`, true)
     	.setColor('RANDOM')
-    	.setFooter('DokiDoki Server List!')
+    	.setFooter('Max Bots Server List!')
     message.channel.send(embed);
 	}
 }
