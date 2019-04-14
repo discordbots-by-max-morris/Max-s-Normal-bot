@@ -11,7 +11,7 @@ class WarnCommand extends commando.Command
     {
         super(client,{
             name: 'warn',
-            group: 'moderation',
+            group: 'admin',
             memberName: 'warn',
             description:'warn a user in discord'
         });
