@@ -139,7 +139,7 @@ module.exports = class HelpCommand extends Command {
                 if(commands.find('name',args.command)){
                     const cmd = this.client.registry.findCommands().find(command => command.name, args.command);
                     embed.setTitle("Help for " + cmd.name)
-                    embed.addField("Description", cmd.description+" ")
+                    embed.addField("Description", cmd.description+"... ")
                     var aliass = "";
                     var examp = "";
                     if(cmd.aliases.length > 0){
