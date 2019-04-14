@@ -1,60 +1,55 @@
 const { Command } = require('discord.js-commando');
-const { oneLine } = require('common-tags');
 
 module.exports = class BackdoorCommand extends Command {
-  constructor(bot) {
-    super(bot, {
-      name: 'backdoor',
-      aliases: ['getinvite', 'getinv', 'forceinv', 'getmein', 'letmein'],
-      group: 'control',
-      memberName: 'backdoor',
-      description: 'Sends a server invite to the specified server.',
-      details: oneLine`
-      This command sends an invite to the specified server.
-      This is used by devs for support or contact to the users.
-      Permission is locked to developers. Duh!
-			`,
-      examples: ['backdoor 1234567890'],
+    constructor(bot) {
+        super(bot, {
+            name: 'backdoor',
+            aliases: ['getinvite', 'getinv', 'forceinv', 'bd'],
+            group: 'owner',
+            memberName: 'backdoor',
+            description: 'Sends a server invite to the specified server. Only the developer can use this!',
+            examples: ['~backdoor [server ID]'],
+            args: [{
+                key: 'guild',
+                label: 'guild',
+                prompt: 'What server would you like to backdoor?',
+                type: 'string'
+            }],
+        });
+    }
 
-      args: [{
-        key: 'guild',
-        label: 'guild',
-        prompt: 'What server would you like to backdoor?',
-        type: 'string',
-        infinite: false
-      }],
-      ownerOnly: true,
-      guarded: true
-    });
-  }
+    hasPermission(msg) {
+        return this.client.isOwner(msg.author);
+    }
 
-  run(message, args) {
-    const getGuild = this.client.guilds.get(args.guild);
-    let found = 0;
-    getGuild.channels.map(c => {
-      if (found === 0) {
-        if (c.type === 'text') {
-          if (c.permissionsFor(this.client.user).has('VIEW_CHANNEL') === true) {
-            if (c.permissionsFor(this.client.user).has('CREATE_INSTANT_INVITE') === true) {
-              found = 1;
-              c.createInvite({
-                temporary: false,
+    async run(message, args) {
+
+        if (!message.guild) {
+            const getGuild = this.client.guilds.get(args.guild)
+            const toInv = getGuild.channels.first()
+
+            const invite = toInv.createInvite({
                 maxAge: 120,
                 maxUses: 1
-              })
-                .then(invite => {
-                  message.author.send(`${invite}`);
-                  if (message.guild) message.reply(':white_check_mark: **Check your DMs.**');
-                  return null;
-                }).catch(console.error);
-            }
-          }
+            }).then(async invite => {
+                message.author.send(`Here's the invite link to **${getGuild.name}**!\n${invite}`)
+            }).catch(console.error)
+
+        } else {
+            const getGuild = this.client.guilds.get(args.guild)
+            const toInv = getGuild.channels.first()
+
+            const invite = toInv.createInvite({
+                maxAge: 120,
+                maxUses: 1
+            }).then(async invite => {
+                message.author.send(`Here's the invite link to **${getGuild.name}**!\n${invite}`)
+                message.channel.send('✅ | I\'ve sent the invite link to your DMs!')
+            }).catch(console.error)
         }
-      }
-    });
-  }
+    }
 };
 
 process.on('unhandledRejection', err => {
-  console.error(`Uncaught Promise Error: \n${err.stack}`);
+    console.error('Uncaught Promise Error: \n' + err.stack);
 });
