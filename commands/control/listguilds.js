@@ -7,7 +7,7 @@ module.exports = class guildlistCommand extends Command {
         super(client, {
             name: 'guildlist',
             aliases: ['gl'],
-            group: 'owner',
+            group: 'control',
             memberName: 'guildlist',
             description: 'guild names list',
             examples: ['<guilds']
