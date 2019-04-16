@@ -23,6 +23,7 @@
     "node-pre-gyp": "^0.12.0",
     "node-superfetch": "^0.1.9",
     "opusscript": "^0.0.6",
+    "underscore": "^1.9.1",
     "os": "^0.1.1",
     "path": "^0.12.7",
     "request": "^2.88.0",
