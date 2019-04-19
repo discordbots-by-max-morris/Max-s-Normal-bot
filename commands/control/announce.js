@@ -34,7 +34,7 @@ module.exports = class AnnounceCommand extends Command {
       .setDescription(args.toAnn)
       .setColor('0xFF0000')
       .setTimestamp();
-    annChan.send('<@&568827354214825985>', { embed }).then(() => {
+    annChan.send('568827354214825985', { embed }).then(() => {
       message.reply('Announcement sent!');
     });
   }
