@@ -33,9 +33,9 @@ module.exports = class PurgeCommand extends Command {
     });
   }
 
-  async run(msg, { member, num_messages, reason }) {
-    let messages = await msg.channel.messages.fetch({ limit: num_messages });
+  async run(message, { member, num_messages, reason }) {
+    let messages = await message.channel.messages.get({ limit: num_messages });
     messages = messages.filter((msg) => msg.author.id === member.id);
-    msg.channel.bulkDelete(messages);
+    message.channel.bulkDelete(messages);
   }
 };
