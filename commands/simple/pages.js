@@ -1,4 +1,5 @@
 const commando = require('discord.js-commando');
+const Discord = require('discord.js')
 
 class CoinFlipCommand extends commando.Command
 {
