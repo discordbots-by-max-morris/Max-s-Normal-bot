@@ -12,7 +12,7 @@ class PagesCommand extends commando.Command
             description: 'No description'
         });
     }
-    exports run = (client, message, args, tools) => {
+    async run = (client, message, args, tools) => {
 
         let pages = ['This is page one!', 'Second page'];
         let page = 1;
