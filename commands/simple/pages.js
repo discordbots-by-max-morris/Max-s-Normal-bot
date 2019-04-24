@@ -1,7 +1,7 @@
 const commando = require('discord.js-commando');
 const Discord = require('discord.js')
 
-class CoinFlipCommand extends commando.Command
+class PagesCommand extends commando.Command
 {
     constructor(client)
     {
@@ -59,4 +59,4 @@ class CoinFlipCommand extends commando.Command
 
 }
 
-module.exports = CoinFlipCommand
+module.exports = PagesCommand;
