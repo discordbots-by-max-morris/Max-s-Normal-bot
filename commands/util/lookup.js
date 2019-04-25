@@ -8,7 +8,7 @@ module.exports = class LookUpCommand extends Command {
     super(client, {
       name: 'lookup',
       memberName: 'lookup',
-      group: 'utility',
+      group: 'util',
       description: 'Generates a screenshot of a website.',
       examples: [
         'lookup discordapp.com'
