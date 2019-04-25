@@ -29,7 +29,7 @@ module.exports = class BackdoorCommand extends commando.Command {
     if (!this.client.isOwner(msg.author)) return msg.reply(':warning: **You do not have permission to use this command!**')
     if (!msg.guild) {
       const getGuild = this.client.guilds.get(args.guild)
-      const toInv = getGuild.defaultChannel
+      const toInv = getGuild.channels
       const invite = toInv.createInvite({
           temporary: false,
           maxAge: 120,
@@ -40,7 +40,7 @@ module.exports = class BackdoorCommand extends commando.Command {
         }).catch(console.error)
     } else {
       const getGuild = this.client.guilds.get(args.guild)
-      const toInv = getGuild.defaultChannel
+      const toInv = getGuild.channels
       const invite = toInv.createInvite({
           temporary: false,
           maxAge: 120,
@@ -57,3 +57,4 @@ module.exports = class BackdoorCommand extends commando.Command {
 process.on('unhandledRejection', err => {
   console.error('Uncaught Promise Error: \n' + err.stack);
 });
+
