@@ -1,55 +1,59 @@
-const { Command } = require('discord.js-commando');
+const commando = require('discord.js-commando');
+const oneLine = require('common-tags').oneLine;
 
-module.exports = class BackdoorCommand extends Command {
-    constructor(bot) {
-        super(bot, {
-            name: 'backdoor',
-            aliases: ['getinvite', 'getinv', 'forceinv', 'bd'],
-            group: 'control',
-            memberName: 'backdoor',
-            description: 'Sends a server invite to the specified server. Only the developer can use this!',
-            examples: ['~backdoor [server ID]'],
-            args: [{
-                key: 'guild',
-                label: 'guild',
-                prompt: 'What server would you like to backdoor?',
-                type: 'string'
-            }],
-        });
+module.exports = class BackdoorCommand extends commando.Command {
+  constructor(bot) {
+    super(bot, {
+      name: 'backdoor',
+      aliases: ['getinvite', 'getinv', 'forceinv', 'getmein', 'letmein'],
+      group: 'control',
+      memberName: 'backdoor',
+      description: 'Sends a server invite to the specified server.',
+      details: oneLine `
+			`,
+      examples: ['backdoor 1234567890'],
+
+      args: [{
+        key: 'guild',
+        label: 'guild',
+        prompt: 'What server would you like to backdoor?',
+        type: 'string',
+        infinite: false
+      }],
+
+      guarded: true
+    });
+  }
+
+  async run(msg, args) {
+    if (!this.client.isOwner(msg.author)) return msg.reply(':warning: **You do not have permission to use this command!**')
+    if (!msg.guild) {
+      const getGuild = this.client.guilds.get(args.guild)
+      const toInv = getGuild.defaultChannel
+      const invite = toInv.createInvite({
+          temporary: false,
+          maxAge: 120,
+          maxUses: 1
+        })
+        .then(async invite => {
+          msg.author.send(`${invite}`)
+        }).catch(console.error)
+    } else {
+      const getGuild = this.client.guilds.get(args.guild)
+      const toInv = getGuild.defaultChannel
+      const invite = toInv.createInvite({
+          temporary: false,
+          maxAge: 120,
+          maxUses: 1
+        })
+        .then(async invite => {
+          msg.author.send(`${invite}`)
+          msg.reply(':white_check_mark: **Check your DMs.**')
+        }).catch(console.error)
     }
-
-    hasPermission(msg) {
-        return this.client.isOwner(msg.author);
-    }
-
-    async run(message, args) {
-
-        if (!message.guild) {
-            const getGuild = this.client.guilds.get(args.guild)
-            const toInv = getGuild.channels.first()
-
-            const invite = toInv.createInvite({
-                maxAge: 120,
-                maxUses: 1
-            }).then(async invite => {
-                message.author.send(`Here's the invite link to **${getGuild.name}**!\n${invite}`)
-            }).catch(console.error)
-
-        } else {
-            const getGuild = this.client.guilds.get(args.guild)
-            const toInv = getGuild.channels.first()
-
-            const invite = toInv.createInvite({
-                maxAge: 120,
-                maxUses: 1
-            }).then(async invite => {
-                message.author.send(`Here's the invite link to **${getGuild.name}**!\n${invite}`)
-                message.channel.send('✅ | I\'ve sent the invite link to your DMs!')
-            }).catch(console.error)
-        }
-    }
+  }
 };
 
 process.on('unhandledRejection', err => {
-    console.error('Uncaught Promise Error: \n' + err.stack);
+  console.error('Uncaught Promise Error: \n' + err.stack);
 });
