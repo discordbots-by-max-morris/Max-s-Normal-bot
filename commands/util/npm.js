@@ -47,7 +47,7 @@ module.exports = class NPMCommand extends Command {
     }
     message.channel.stopTyping()
     return message.embed({
-      author: { name: this.client.user.tag, icon_url: this.client.user.displayAvatarURL() },
+      author: { name: this.client.user.tag, icon_url: message.client.user.displayAvatarURL() },
       footer: { text: message.author.tag, icon_url: message.author.displayAvatarURL() },
       timestamp: new Date(),
       url: npmPackage.repository && npmPackage.repository.homepage ? npmPackage.repository.homepage : '',
