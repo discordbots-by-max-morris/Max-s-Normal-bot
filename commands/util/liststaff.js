@@ -6,7 +6,7 @@ module.exports = class ListStaffCommand extends Command {
     super(client, {
       name: 'liststaff',
       memberName: 'liststaff',
-      group: 'utility',
+      group: 'util',
       description: 'Show\'s all the bot staff.',
       throttling: {
         usages: 2,
@@ -17,7 +17,7 @@ module.exports = class ListStaffCommand extends Command {
 
   run (message, args) {
     var emojiList = {}
-    if (this.client.guilds.get('110373943822540800')) {
+    if (this.client.guilds.get('550727792686530590')) {
       var validEmojis = [
         { name: 'online', id: '313956277808005120' },
         { name: 'idle', id: '313956277220802560' },
