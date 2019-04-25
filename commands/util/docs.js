@@ -16,7 +16,7 @@ module.exports = class DocsCommand extends Command {
     super(client, {
       name: 'docs',
       memberName: 'docs',
-      group: 'utility',
+      group: 'util',
       description: 'Searches discord.js documentation.',
       details: 'Searches the discord.js docs. You can search the stable, master, or commando docs.',
       clientPermissions: [
