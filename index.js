@@ -6,18 +6,7 @@ const client = new commando.CommandoClient({
   unknownCommandResponse: true, // Set this to true if you want to send a message when a user uses the prefix not followed by a command
 });
 
-const activities_list = [ 
-    "Your mum",
-    "Roblox", 
-    "Max is my Papa",
-    "Max Morris -Creator of the bot!"
-    ]; // creates an arraylist containing phrases you want your bot to switch through.
-client.on('ready', () => {
-    setInterval(() => {
-        const index = Math.floor(Math.random() * (activities_list.length - 1) + 1); // generates a random number between 1 and the length of the activities array list (in this case 5).
-        client.user.setActivity(activities_list[index]); // sets bot's activities to one of the phrases in the arraylist.
-    }, 10000); // Runs this every 10 seconds.
-});
+
 // const defclient = new Discord.Client();
 const path = require('path');
 const chalk = require('chalk');
