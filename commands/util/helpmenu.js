@@ -5,7 +5,7 @@ class HelpCommand extends commando.Command {
     constructor(client) {
         super(client, {
             name: 'helpmenu',
-            group: 'admin',
+            group: 'fun',
             memberName: 'helpmenu',
             description: 'Shows the help'
         });
@@ -46,6 +46,28 @@ class HelpCommand extends commando.Command {
                         .addField('rps', 'Rock Paper Sissors', true)
                         .addField('funmirror', ' Looks at your refrection in a mirror', true)
                         .addField('give-flower', 'Gives Lightbot a flower', true)
+                        .setColor("#ff0080")
+                        .setThumbnail(message.client.user.displayAvatarURL)
+                        .setImage('https://cdn.discordapp.com/attachments/561986291131220008/564985306047053834/hi.jpg')
+                        .setFooter("|| Developed by: Max Morris || I got help from: DragonGirlxx || Code language: JavaScript || Version: Foxy 1.0 ||")
+                }
+                    break;
+                case'moderation': {
+                    var help = new discord.RichEmbed()
+                        .setTitle('Hi, my name is Max\'s bot I am made by Max Morris#5487')
+                        .setDescription("Hi, my name is Max\'s bot I am made by Max Morris#5487\n\n**Hey bitch, this are my Moderation commands.**")
+                        .addField("Ban", "Ban  a user")
+                        .addField("Kick", "Kick a user")
+                        .addField("Mute", "Mute a user")
+                        .addField("Toggledaef", "Toggle deafen on a user (Server Deafen)")
+                        .addField("Status", "See the bots status")
+                        .addField("Voicemove", "Move a user to a difrent voice channel")
+                        .addField("dm", "dms a user")
+                        .addField("unmute", "Unmute a user")
+                        .addField("undeafen", "Undeafen a user")
+                        .addField("Togglemute", "Mute a user")
+                        .addField("Unban", "Unban a banned user")
+                        .addField("Statusgame", "Set the bot status")
                         .setColor("#ff0080")
                         .setThumbnail(message.client.user.displayAvatarURL)
                         .setImage('https://cdn.discordapp.com/attachments/561986291131220008/564985306047053834/hi.jpg')
@@ -123,6 +145,7 @@ class HelpCommand extends commando.Command {
                         .addField(':stuck_out_tongue: Fun', '``This bots fun commands``', true)
                         .addField(':card_index: Info', '``Info about this bot mainly commands``', true)
                         .addField(':gear: Config', '``This bots config commands (I will try to make databases soon for custom shit)``', true)
+                        .addField(':rotating_light:', '``This is the bots moderation commands!``')
                         .setColor("#ff0080")
                         .setThumbnail(message.client.user.displayAvatarURL)
                         .setImage('https://cdn.discordapp.com/attachments/561986291131220008/564985306047053834/hi.jpg')
@@ -142,13 +165,14 @@ class HelpCommand extends commando.Command {
                     await result.react("😛");
                     await result.react("📇");
                     await result.react("⚙");
+                    await result.react("🚨");
                     await result.react("❌");
                 })
             }
 
             function reactions(result) {
                 const filter = (reaction, user) => {
-                    return ["🖼", "💵", "📸", "🎲", "😛", "😏", "📇", "⚙", "❌"].includes(reaction.emoji.name) && user.id === message.author.id;
+                    return ["🖼", "💵", "📸", "🎲", "😛", "😏", "📇", "⚙", "🚨", "❌"].includes(reaction.emoji.name) && user.id === message.author.id;
                 };
                 result.awaitReactions(filter, {max: 1, maxEmojis: 1})
                     .then(collected => {
@@ -174,6 +198,10 @@ class HelpCommand extends commando.Command {
                                 break;
                             case ("⚙"): {
                                 createMessage(`config`, result);
+                            }
+                                break;
+                            case ("🚨"): {
+                                createMessage(`moderation`, result);
                             }
                                 break;
                             case ("❌"): {
