@@ -32,6 +32,7 @@
     "sqlite": "^3.0.3",
     "superagent": "^4.1.0",
     "weather-js": "^2.0.0",
+    "pageres": "^4.5.1",
     "ytdl-core": "^0.29.1"
   },
   "devDependencies": {},
