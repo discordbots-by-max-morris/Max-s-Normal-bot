@@ -52,7 +52,7 @@ module.exports = class StatsCommand extends Command {
 					inline: true
 				}
 			],
-			thumbnail: { url: client.user.displayAvatarURL({ format: 'png' }) }
+			thumbnail: { url: this.client.user.displayAvatarURL({ format: 'png' }) }
 		});
 	}
 };
