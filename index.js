@@ -25,9 +25,9 @@ const os = require('os');
 const snekfetch = require('snekfetch')
 
 
-
 client.registry
-  .registerGroups([
+    .registerDefaultTypes()
+    .registerGroups([
     ['general', 'general'],
     ['misc', 'Miscellaneous'],
     ['support', 'Support'],
@@ -44,11 +44,14 @@ client.registry
     ['music', 'Music'],
     ['simple', 'simple'],
     ['util', 'util'],
-    ['misc', 'Misc']
-  ])
-
-  .registerDefaults()
-  .registerCommandsIn(path.join(__dirname, 'commands'));
+    ['misc', 'Misc'],
+    ['help', 'help']
+    ])
+    .registerDefaultGroups()
+    .registerDefaultCommands({
+        help: false,
+    })
+    .registerCommandsIn(path.join(__dirname, 'commands'));
 
   global.currentTeamMembers = [];
   global.servers = {};
