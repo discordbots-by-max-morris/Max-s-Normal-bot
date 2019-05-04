@@ -22,7 +22,7 @@ module.exports = class TypingTestCommand extends Command {
 			args: [
 				{
 					key: 'difficulty',
-					prompt: `What should the difficulty of the game be? Either ${list(difficulties, 'or')}.`,
+					prompt: `What should the difficulty of the game be? Either ${difficulties, 'or')}.`,
 					type: 'string',
 					oneOf: difficulties,
 					parse: difficulty => difficulty.toLowerCase()
